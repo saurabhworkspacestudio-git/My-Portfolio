@@ -53,7 +53,7 @@ const projects: ProjectData[] = [
   {
     number: '02',
     name: 'Sales Cloud & Veeva CRM',
-    domain: 'Pharmaceutical Domain',
+    domain: 'AbbVie • Pharmaceutical Domain',
     summary:
       'Built and automated core sales processes for a pharmaceutical-domain implementation on Sales Cloud and Veeva CRM.',
     bullets: [
@@ -78,7 +78,7 @@ const projects: ProjectData[] = [
         <div className="flex justify-between"><span>Mentorship:</span><span className="text-[#10B981]">Code Reviews</span></div>
       </div>
     ),
-    footerClient: 'CLIENT: COGNIZANT',
+    footerClient: 'CLIENT: ABBVIE',
     footerDomain: 'DOMAIN: PHARMACEUTICAL',
   },
 ];

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,6 +37,60 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-[#0C0D0E] text-[#E8EDF2] font-['Inter',sans-serif] overflow-x-clip select-none m-0 p-0">
+  <!-- Top Edge Scroll Progress Indicator -->
+  <div id="scroll-progress-bar" class="fixed top-0 left-0 h-[2.5px] w-0 bg-gradient-to-r from-[#10B981] via-[#34D399] to-[#10B981] z-[100] shadow-[0_0_12px_rgba(16,185,129,0.9)] pointer-events-none transition-[width] duration-75"></div>
+
+  <!-- Floating Frosted Obsidian Top Bar (slides in smoothly on scroll) -->
+  <header id="floating-top-bar" class="fixed top-3 sm:top-5 left-1/2 -translate-x-1/2 w-[94%] max-w-6xl z-50 pointer-events-none transition-all duration-500 -translate-y-24 opacity-0">
+    <div class="pointer-events-auto w-full px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#0C0D0E]/85 backdrop-blur-xl border border-[rgba(232,237,242,0.12)] shadow-[0_12px_35px_rgba(0,0,0,0.7),0_0_20px_rgba(16,185,129,0.08)] flex items-center justify-between gap-3">
+      
+      <!-- Brand Monogram & Live Status -->
+      <a href="#" class="flex items-center gap-2.5 text-[#E8EDF2] group hover:text-white transition-colors pl-1">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#10B981] to-[#34D399] flex items-center justify-center font-bold text-black font-heading text-xs shadow-[0_0_12px_rgba(16,185,129,0.5)] group-hover:scale-105 transition-transform">
+          SG
+        </span>
+        <div class="hidden sm:flex flex-col">
+          <span class="text-xs sm:text-sm font-bold tracking-tight font-heading leading-tight">
+            Saurabh Gaikwad
+          </span>
+          <span class="text-[10px] text-[#10B981] font-mono flex items-center gap-1 leading-none mt-0.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
+            Salesforce Dev &bull; 5x Cert
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links (with active scroll-spy indicator) -->
+      <nav class="hidden md:flex items-center gap-1 text-xs font-mono tracking-wider uppercase bg-white/[0.03] p-1 rounded-full border border-white/5">
+        <a href="#about" class="topbar-nav-link px-3 py-1.5 rounded-full transition-all text-[#E8EDF2]/70 hover:text-white hover:bg-white/5" data-section="about">About</a>
+        <a href="#certifications" class="topbar-nav-link px-3 py-1.5 rounded-full transition-all text-[#E8EDF2]/70 hover:text-white hover:bg-white/5" data-section="certifications">Certifications</a>
+        <a href="#journey" class="topbar-nav-link px-3 py-1.5 rounded-full transition-all text-[#E8EDF2]/70 hover:text-white hover:bg-white/5" data-section="journey">Journey</a>
+        <a href="#projects" class="topbar-nav-link px-3 py-1.5 rounded-full transition-all text-[#E8EDF2]/70 hover:text-white hover:bg-white/5" data-section="projects">Projects</a>
+        <a href="#skills" class="topbar-nav-link px-3 py-1.5 rounded-full transition-all text-[#E8EDF2]/70 hover:text-white hover:bg-white/5" data-section="skills">Skills</a>
+        <a href="#contact" class="topbar-nav-link px-3 py-1.5 rounded-full transition-all text-[#E8EDF2]/70 hover:text-white hover:bg-white/5" data-section="contact">Contact</a>
+      </nav>
+
+      <!-- Right Actions: Resume & Contact Button -->
+      <div class="flex items-center gap-2.5 pr-1">
+        <a
+          href="assets/Saurabh_Gaikwad_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bubble-btn bubble-btn-ghost px-3.5 sm:px-4 py-1.5 rounded-full text-[#E8EDF2] hover:text-[#34D399] text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer"
+        >
+          <span>Resume</span>
+          <span class="text-[#10B981]">&darr;</span>
+        </a>
+        <a
+          href="#contact"
+          class="bubble-btn bubble-btn-primary px-3.5 sm:px-4 py-1.5 rounded-full text-white text-xs font-mono font-semibold transition-all cursor-pointer"
+        >
+          Let&rsquo;s Talk
+        </a>
+      </div>
+    </div>
+  </header>
+
   <div id="root" class="w-full min-h-screen bg-[#0C0D0E] overflow-x-clip">
 
     <!-- =====================================================================
@@ -44,24 +98,24 @@
          Full viewport height (h-screen), flex column layout, overflowX: clip
          ===================================================================== -->
     <section class="relative h-screen w-full flex flex-col justify-between overflow-x-clip bg-[#0C0D0E]">
-      <!-- Navbar: 4 links evenly spaced -->
-      <nav class="w-full flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 z-20 fade-in-element" data-delay="0" style="transform: translateY(-20px);">
-        <a href="#about" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+      <!-- Navbar: responsive links -->
+      <nav class="w-full flex justify-between items-center px-4 sm:px-6 md:px-10 pt-4 sm:pt-6 md:pt-8 z-20 gap-2 sm:gap-4 flex-wrap sm:flex-nowrap fade-in-element" data-delay="0" style="transform: translateY(-20px);">
+        <a href="#about" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
           About
         </a>
-        <a href="#certifications" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+        <a href="#certifications" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
           Certifications
         </a>
-        <a href="#journey" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+        <a href="#journey" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
           Journey
         </a>
-        <a href="#projects" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+        <a href="#projects" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
           Projects
         </a>
-        <a href="#skills" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+        <a href="#skills" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
           Skills
         </a>
-        <a href="#contact" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+        <a href="#contact" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
           Contact
         </a>
       </nav>
@@ -131,13 +185,12 @@
       </div>
     </section>
 
-        <!-- =====================================================================
-         2. CERTIFICATIONS SECTION -- SCROLL-DRIVEN OPPOSING HORIZONTAL ROWS
-         When scrolling down: Row 1 moves right-to-left, Row 2 moves left-to-right
-         Features the 5 official Salesforce badge logos with interactive links
+    <!-- =====================================================================
+         2. CERTIFICATIONS SECTION -- VERIFIED CREDENTIALS
+         Clean responsive grid displaying all 5 official certifications normally
          ===================================================================== -->
-    <section id="certifications" class="relative w-full bg-[#0C0D0E] pt-24 sm:pt-32 md:pt-40 pb-24 sm:pb-32 select-none overflow-hidden">
-      <!-- Section Header (Help text removed) -->
+    <section id="certifications" class="relative w-full bg-[#0C0D0E] pt-24 sm:pt-32 md:pt-36 pb-24 sm:pb-32 select-none">
+      <!-- Section Header -->
       <div class="max-w-7xl mx-auto w-full px-5 sm:px-8 md:px-10 mb-12 sm:mb-16">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/25 mb-4">
           <span class="inline-block w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
@@ -145,16 +198,21 @@
             Trailhead Verified Accreditations
           </span>
         </div>
-        <h2 class="hero-heading font-black uppercase leading-tight tracking-tight font-heading fade-in-element" data-delay="0" style="transform: translateY(30px); font-size: clamp(2.5rem, 7vw, 90px);">
-          Certifications
-        </h2>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 class="hero-heading font-black uppercase leading-tight tracking-tight font-heading fade-in-element" data-delay="0" style="transform: translateY(30px); font-size: clamp(2.5rem, 7vw, 90px);">
+            Certifications
+          </h2>
+          <p class="text-[#E8EDF2]/60 text-sm sm:text-base max-w-md font-light">
+            Salesforce-certified accreditations covering programmatic development, enterprise administration, AI architectures, and CRM consulting.
+          </p>
+        </div>
       </div>
 
-      <!-- Container with Dual Opposing Scrolling Rows -->
-      <div class="relative w-full overflow-hidden flex flex-col gap-6 sm:gap-8">
-        <!-- Row 1: moves horizontally to the left as you scroll down -->
-        <div id="cert-row-1" class="cert-scroll-row pl-5 sm:pl-8 md:pl-10">
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+      <!-- Normal Responsive Grid Display: 5 Certification Cards -->
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+        <div class="flex flex-wrap justify-center gap-6 glow-group">
+          <!-- Card 1: PD-I -->
+          <div class="cert-card-interactive glow-box w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 sm:p-7 flex flex-col justify-between group select-none">
             <div>
               <div class="flex items-center justify-between gap-4 mb-5">
                 <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
@@ -171,15 +229,15 @@
                 </span>
               </div>
 
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+              <h3 class="font-bold text-lg sm:text-xl text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
                 Salesforce Certified Platform Developer I
               </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-3 font-light leading-relaxed">
                 Core Apex programmatic architecture, triggers, visual frameworks, and governor-limit compliant data operations.
               </p>
             </div>
 
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <div class="pt-5 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -196,7 +254,9 @@
               </a>
             </div>
           </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+
+          <!-- Card 2: ADM-201 -->
+          <div class="cert-card-interactive glow-box w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 sm:p-7 flex flex-col justify-between group select-none">
             <div>
               <div class="flex items-center justify-between gap-4 mb-5">
                 <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
@@ -213,15 +273,15 @@
                 </span>
               </div>
 
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+              <h3 class="font-bold text-lg sm:text-xl text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
                 Salesforce Certified Administrator
               </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-3 font-light leading-relaxed">
                 Enterprise configuration, role hierarchies, sharing rules, security models, and declarative Flow automation.
               </p>
             </div>
 
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <div class="pt-5 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -238,7 +298,9 @@
               </a>
             </div>
           </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+
+          <!-- Card 3: SCC -->
+          <div class="cert-card-interactive glow-box w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 sm:p-7 flex flex-col justify-between group select-none">
             <div>
               <div class="flex items-center justify-between gap-4 mb-5">
                 <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
@@ -255,15 +317,15 @@
                 </span>
               </div>
 
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+              <h3 class="font-bold text-lg sm:text-xl text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
                 Salesforce Certified Sales Cloud Consultant
               </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-3 font-light leading-relaxed">
                 Sales process architecture, lead-to-opportunity lifecycles, forecasting, territory design, and CRM rollouts.
               </p>
             </div>
 
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <div class="pt-5 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -280,7 +342,9 @@
               </a>
             </div>
           </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+
+          <!-- Card 4: AGENT -->
+          <div class="cert-card-interactive glow-box w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 sm:p-7 flex flex-col justify-between group select-none">
             <div>
               <div class="flex items-center justify-between gap-4 mb-5">
                 <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
@@ -297,15 +361,15 @@
                 </span>
               </div>
 
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+              <h3 class="font-bold text-lg sm:text-xl text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
                 Salesforce Certified Agentforce Specialist
               </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-3 font-light leading-relaxed">
                 Autonomous AI agents, prompt templates, action topics, Data Cloud grounding, and real-time reasoning workflows.
               </p>
             </div>
 
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <div class="pt-5 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -322,7 +386,9 @@
               </a>
             </div>
           </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+
+          <!-- Card 5: AI-ASC -->
+          <div class="cert-card-interactive glow-box w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 sm:p-7 flex flex-col justify-between group select-none">
             <div>
               <div class="flex items-center justify-between gap-4 mb-5">
                 <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
@@ -339,15 +405,15 @@
                 </span>
               </div>
 
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+              <h3 class="font-bold text-lg sm:text-xl text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
                 Salesforce Certified AI Associate
               </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-3 font-light leading-relaxed">
                 Foundational AI fundamentals, machine learning in CRM, generative models, and ethical AI deployment principles.
               </p>
             </div>
 
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <div class="pt-5 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -364,390 +430,6 @@
               </a>
             </div>
           </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/platform_developer_1.png"
-                    alt="Salesforce Certified Platform Developer I Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  PD-I
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified Platform Developer I
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Core Apex programmatic architecture, triggers, visual frameworks, and governor-limit compliant data operations.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/administrator.png"
-                    alt="Salesforce Certified Administrator Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  ADM-201
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified Administrator
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Enterprise configuration, role hierarchies, sharing rules, security models, and declarative Flow automation.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Row 2: moves horizontally to the right as you scroll down -->
-        <div id="cert-row-2" class="cert-scroll-row pl-5 sm:pl-8 md:pl-10">
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/agentforce_specialist.png"
-                    alt="Salesforce Certified Agentforce Specialist Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  AGENT
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified Agentforce Specialist
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Autonomous AI agents, prompt templates, action topics, Data Cloud grounding, and real-time reasoning workflows.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/ai_associate.png"
-                    alt="Salesforce Certified AI Associate Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  AI-ASC
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified AI Associate
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Foundational AI fundamentals, machine learning in CRM, generative models, and ethical AI deployment principles.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/sales_cloud_consultant.png"
-                    alt="Salesforce Certified Sales Cloud Consultant Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  SCC
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified Sales Cloud Consultant
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Sales process architecture, lead-to-opportunity lifecycles, forecasting, territory design, and CRM rollouts.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/platform_developer_1.png"
-                    alt="Salesforce Certified Platform Developer I Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  PD-I
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified Platform Developer I
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Core Apex programmatic architecture, triggers, visual frameworks, and governor-limit compliant data operations.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/administrator.png"
-                    alt="Salesforce Certified Administrator Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  ADM-201
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified Administrator
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Enterprise configuration, role hierarchies, sharing rules, security models, and declarative Flow automation.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/agentforce_specialist.png"
-                    alt="Salesforce Certified Agentforce Specialist Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  AGENT
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified Agentforce Specialist
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Autonomous AI agents, prompt templates, action topics, Data Cloud grounding, and real-time reasoning workflows.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
-            <div>
-              <div class="flex items-center justify-between gap-4 mb-5">
-                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
-                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
-                  <img
-                    src="assets/certifications/ai_associate.png"
-                    alt="Salesforce Certified AI Associate Badge"
-                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
-                  AI-ASC
-                </span>
-              </div>
-
-              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
-                Salesforce Certified AI Associate
-              </h3>
-              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
-                Foundational AI fundamentals, machine learning in CRM, generative models, and ethical AI deployment principles.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-              <a
-                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
-              >
-                Verify &rarr;
-              </a>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -773,11 +455,11 @@
 
         <!-- Timeline Grid with Connecting Line -->
         <div class="relative">
-          <div class="hidden md:block absolute top-10 left-6 right-6 h-[1.5px] bg-[#10B981]/25 z-0"></div>
+          <div class="hidden lg:block absolute top-10 left-6 right-6 h-[1.5px] bg-[#10B981]/25 z-0"></div>
 
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-5 relative z-10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 relative z-10 glow-group">
             <!-- 1 -->
-            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0">
+            <div class="fade-in-element journey-milestone-card glow-box rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between group cursor-pointer" data-delay="0">
               <div class="flex items-center justify-between">
                 <span class="text-2xl font-black text-[#10B981] font-heading">2021</span>
                 <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
@@ -793,7 +475,7 @@
             </div>
 
             <!-- 2 -->
-            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0.12">
+            <div class="fade-in-element journey-milestone-card glow-box rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between group cursor-pointer" data-delay="0.12">
               <div class="flex items-center justify-between">
                 <span class="text-2xl font-black text-[#10B981] font-heading">Jul 2021</span>
                 <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
@@ -809,7 +491,7 @@
             </div>
 
             <!-- 3 -->
-            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0.24">
+            <div class="fade-in-element journey-milestone-card glow-box rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between group cursor-pointer" data-delay="0.24">
               <div class="flex items-center justify-between">
                 <span class="text-2xl font-black text-[#10B981] font-heading">Sales Cloud</span>
                 <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
@@ -825,7 +507,7 @@
             </div>
 
             <!-- 4 -->
-            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0.36">
+            <div class="fade-in-element journey-milestone-card glow-box rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between group cursor-pointer" data-delay="0.36">
               <div class="flex items-center justify-between">
                 <span class="text-2xl font-black text-[#10B981] font-heading">Mar 2026</span>
                 <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
@@ -841,7 +523,7 @@
             </div>
 
             <!-- 5 -->
-            <div class="fade-in-element rounded-3xl border border-[#10B981]/40 bg-gradient-to-b from-[#191D24] to-[#131518] p-6 flex flex-col justify-between group" data-delay="0.48">
+            <div class="fade-in-element journey-milestone-card glow-box rounded-3xl border border-[#10B981]/40 bg-gradient-to-b from-[#191D24] to-[#131518] p-6 flex flex-col justify-between group cursor-pointer" data-delay="0.48">
               <div class="flex items-center justify-between">
                 <span class="text-2xl font-black text-white font-heading">Today</span>
                 <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/40 animate-ping"></span>
@@ -970,7 +652,7 @@
           
           <!-- Card 01: Salesforce Field Service (Bayer) -->
           <div class="sticky-card-container h-[85vh] flex items-start justify-center sticky top-24 md:top-32" style="top: calc(5rem + 0px);">
-            <div class="sticky-project-card w-full max-w-6xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[rgba(232,237,242,0.12)] bg-[#131518] p-4 sm:p-6 md:p-8 flex flex-col gap-6 shadow-[0_30px_60px_rgba(0,0,0,0.9)] will-change-transform transition-transform duration-100 ease-out">
+            <div class="sticky-project-card w-full max-w-6xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[rgba(232,237,242,0.12)] bg-[#131518] p-4 sm:p-6 md:p-8 flex flex-col gap-6 shadow-2xl will-change-transform transition-transform duration-100 ease-out">
               
               <!-- Card Header -->
               <div class="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-white/10">
@@ -998,12 +680,12 @@
                 </button>
               </div>
 
-              <!-- Bottom Row: 2-Column Grid -->
-              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 h-full">
-                <!-- Left Column (40% width): 2 stacked diagram / architecture mockups -->
-                <div class="md:col-span-5 flex flex-col gap-4">
+              <!-- Bottom Row: 2-Column Grid with Glow & Focus-Blur System -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 h-full glow-group">
+                <!-- Left Column (40% width on desktop): 2 stacked diagram / architecture mockups -->
+                <div class="lg:col-span-5 flex flex-col gap-4">
                   <!-- Left Top Tile: FSL Object Model Diagram -->
-                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(130px, 16vw, 230px);">
+                  <div class="glow-box cursor-pointer w-full rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-4 sm:p-5 flex flex-col justify-between" style="min-height: 140px;">
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">FSL Object Architecture</span>
                       <span class="text-xs text-white/40 font-mono">UML</span>
@@ -1021,7 +703,7 @@
                   </div>
 
                   <!-- Left Bottom Tile: Governor Limits & Flow Metrics -->
-                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(160px, 22vw, 340px);">
+                  <div class="glow-box cursor-pointer w-full rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-4 sm:p-5 flex flex-col justify-between" style="min-height: 180px;">
                     <div>
                       <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">Performance &bull; Governor Limits</span>
                       <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
@@ -1036,9 +718,9 @@
                   </div>
                 </div>
 
-                <!-- Right Column (60% width): 1 tall detailed card -->
-                <div class="md:col-span-7 h-full">
-                  <div class="w-full h-full min-h-[260px] md:min-h-[400px] rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-gradient-to-br from-[#191D24] to-[#0C0D0E] p-6 sm:p-8 border border-[rgba(232,237,242,0.12)] flex flex-col justify-between">
+                <!-- Right Column (60% width on desktop): 1 tall detailed card -->
+                <div class="lg:col-span-7 h-full">
+                  <div class="glow-box cursor-pointer w-full h-full min-h-[260px] md:min-h-[380px] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-[#191D24] to-[#0C0D0E] p-5 sm:p-7 md:p-8 border border-[rgba(232,237,242,0.12)] flex flex-col justify-between">
                     <div>
                       <div class="flex items-center justify-between pb-3 border-b border-white/10">
                         <span class="text-xs uppercase tracking-widest text-[#10B981] font-bold font-mono">Core Project Deliverables</span>
@@ -1087,14 +769,14 @@
 
           <!-- Card 02: Sales Cloud & Veeva CRM (Pharmaceutical Domain) -->
           <div class="sticky-card-container h-[85vh] flex items-start justify-center sticky top-24 md:top-32" style="top: calc(5rem + 28px);">
-            <div class="sticky-project-card w-full max-w-6xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[rgba(232,237,242,0.12)] bg-[#131518] p-4 sm:p-6 md:p-8 flex flex-col gap-6 shadow-[0_30px_60px_rgba(0,0,0,0.9)] will-change-transform transition-transform duration-100 ease-out">
+            <div class="sticky-project-card w-full max-w-6xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[rgba(232,237,242,0.12)] bg-[#131518] p-4 sm:p-6 md:p-8 flex flex-col gap-6 shadow-2xl will-change-transform transition-transform duration-100 ease-out">
               
               <!-- Card Header -->
               <div class="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-white/10">
                 <div class="flex items-baseline gap-4 sm:gap-6">
                   <span class="font-black text-[#E8EDF2] leading-none tracking-tight font-heading" style="font-size: clamp(2.5rem, 6vw, 5rem);">02</span>
                   <div class="flex flex-col">
-                    <span class="text-xs uppercase tracking-widest text-[#10B981] font-semibold font-mono">Pharmaceutical Domain</span>
+                    <span class="text-xs uppercase tracking-widest text-[#10B981] font-semibold font-mono">AbbVie &bull; Pharmaceutical Domain</span>
                     <h3 class="text-lg sm:text-2xl md:text-3xl font-medium uppercase text-[#E8EDF2] tracking-tight font-heading">
                       Sales Cloud &amp; Veeva CRM
                     </h3>
@@ -1109,12 +791,12 @@
                 </button>
               </div>
 
-              <!-- Bottom Row: 2-Column Grid -->
-              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 h-full">
-                <!-- Left Column (40% width): 2 stacked diagram / architecture mockups -->
-                <div class="md:col-span-5 flex flex-col gap-4">
+              <!-- Bottom Row: 2-Column Grid with Glow & Focus-Blur System -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 h-full glow-group">
+                <!-- Left Column (40% width on desktop): 2 stacked diagram / architecture mockups -->
+                <div class="lg:col-span-5 flex flex-col gap-4">
                   <!-- Left Top Tile: Data Migration Diagram -->
-                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(130px, 16vw, 230px);">
+                  <div class="glow-box cursor-pointer w-full rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-4 sm:p-5 flex flex-col justify-between" style="min-height: 140px;">
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">Data Loader Migration</span>
                       <span class="text-xs text-white/40 font-mono">ETL</span>
@@ -1130,7 +812,7 @@
                   </div>
 
                   <!-- Left Bottom Tile: Automation & Compliance Metrics -->
-                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(160px, 22vw, 340px);">
+                  <div class="glow-box cursor-pointer w-full rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-4 sm:p-5 flex flex-col justify-between" style="min-height: 180px;">
                     <div>
                       <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">Compliance &bull; Mentorship</span>
                       <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
@@ -1145,9 +827,9 @@
                   </div>
                 </div>
 
-                <!-- Right Column (60% width): 1 tall detailed card -->
-                <div class="md:col-span-7 h-full">
-                  <div class="w-full h-full min-h-[260px] md:min-h-[400px] rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-gradient-to-br from-[#191D24] to-[#0C0D0E] p-6 sm:p-8 border border-[rgba(232,237,242,0.12)] flex flex-col justify-between">
+                <!-- Right Column (60% width on desktop): 1 tall detailed card -->
+                <div class="lg:col-span-7 h-full">
+                  <div class="glow-box cursor-pointer w-full h-full min-h-[260px] md:min-h-[380px] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-[#191D24] to-[#0C0D0E] p-5 sm:p-7 md:p-8 border border-[rgba(232,237,242,0.12)] flex flex-col justify-between">
                     <div>
                       <div class="flex items-center justify-between pb-3 border-b border-white/10">
                         <span class="text-xs uppercase tracking-widest text-[#10B981] font-bold font-mono">Core Project Deliverables</span>
@@ -1184,7 +866,7 @@
                     </div>
 
                     <div class="pt-4 flex items-center justify-between text-xs font-mono text-[#E8EDF2]/50 border-t border-white/10">
-                      <span>CLIENT: COGNIZANT</span>
+                      <span>CLIENT: ABBVIE</span>
                       <span>DOMAIN: PHARMACEUTICAL</span>
                     </div>
                   </div>
@@ -1211,10 +893,10 @@
         </h2>
 
         <!-- Vertical List with Expandable Chips on Click -->
-        <div class="flex flex-col border-t border-[rgba(12,13,14,0.15)]">
+        <div class="flex flex-col border-t border-[rgba(12,13,14,0.15)] glow-group">
           
           <!-- Category 01: Platform -->
-          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.1" style="transform: translateY(25px);">
+          <div class="skill-expandable-item glow-box cursor-pointer fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.1" style="transform: translateY(25px);">
             <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
               <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
                 01
@@ -1241,7 +923,7 @@
           </div>
 
           <!-- Category 02: Development -->
-          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.2" style="transform: translateY(25px);">
+          <div class="skill-expandable-item glow-box cursor-pointer fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.2" style="transform: translateY(25px);">
             <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
               <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
                 02
@@ -1269,7 +951,7 @@
           </div>
 
           <!-- Category 03: Automation -->
-          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.3" style="transform: translateY(25px);">
+          <div class="skill-expandable-item glow-box cursor-pointer fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.3" style="transform: translateY(25px);">
             <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
               <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
                 03
@@ -1297,7 +979,7 @@
           </div>
 
           <!-- Category 04: Integration -->
-          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.4" style="transform: translateY(25px);">
+          <div class="skill-expandable-item glow-box cursor-pointer fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.4" style="transform: translateY(25px);">
             <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
               <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
                 04
@@ -1323,7 +1005,7 @@
           </div>
 
           <!-- Category 05: Tools -->
-          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.5" style="transform: translateY(25px);">
+          <div class="skill-expandable-item glow-box cursor-pointer fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.5" style="transform: translateY(25px);">
             <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
               <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
                 05
@@ -1389,7 +1071,12 @@
         <a href="mailto:saurabhgaikwad2097@gmail.com" class="hover:text-[#10B981] transition-colors">
           saurabhgaikwad2097@gmail.com
         </a>
-        <a href="assets/Saurabh_Gaikwad_Resume.pdf" download class="hover:text-[#34D399] transition-colors flex items-center gap-1 font-semibold text-[#10B981]">
+        <a
+          href="assets/Saurabh_Gaikwad_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-[#34D399] transition-colors flex items-center gap-1 font-semibold text-[#10B981]"
+        >
           Resume.pdf &darr;
         </a>
       </div>
@@ -1403,5 +1090,9 @@
 
   <!-- Main Interaction Scripts -->
   <script src="app.js"></script>
+
+  <!-- Custom Fluid Glowing Cursor Elements -->
+  <div id="custom-cursor-dot" class="custom-cursor-dot" aria-hidden="true"></div>
+  <div id="custom-cursor-ring" class="custom-cursor-ring" aria-hidden="true"></div>
 </body>
 </html>

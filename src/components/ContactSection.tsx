@@ -56,7 +56,8 @@ export const ContactSection: React.FC = () => {
         </a>
         <a
           href="assets/Saurabh_Gaikwad_Resume.pdf"
-          download
+          target="_blank"
+          rel="noopener noreferrer"
           className="hover:text-[#34D399] transition-colors font-semibold text-[#10B981] flex items-center gap-1"
         >
           Resume.pdf &darr;

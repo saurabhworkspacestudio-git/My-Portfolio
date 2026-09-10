@@ -35,44 +35,121 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
-/* Contact Button: Emerald Pill with Ambient Glow */
-.contact-btn-glow {
-  background: linear-gradient(135deg, #064E3B 0%, #047857 50%, #10B981 100%);
-  box-shadow: 0px 4px 15px rgba(16, 185, 129, 0.25);
-  border: 1px solid rgba(52, 211, 153, 0.4);
-  color: #FFFFFF;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.contact-btn-glow:hover {
-  border-color: rgba(52, 211, 153, 0.8);
-  box-shadow: 0px 6px 22px rgba(16, 185, 129, 0.4);
-  transform: translateY(-1px);
-}
-
-.contact-btn-glow:active {
-  transform: scale(0.97);
-}
-
-/* Ghost / Live Project Button */
+/* ==========================================================================
+   Bubble Structure Buttons
+   - 3D Glossy specular bubble dome reflection
+   - Inset top highlight & bottom depth shadow
+   - Bouncy elastic spring hover & squish physics
+   - Radiant ambient glow
+   ========================================================================== */
+.bubble-btn,
+.contact-btn-glow,
 .live-project-btn,
-.ghost-btn {
-  border: 1.5px solid rgba(232, 237, 242, 0.3);
+.ghost-btn,
+.bubble-btn-primary,
+.bubble-btn-ghost {
+  border-radius: 9999px !important;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.25s ease,
+              background 0.25s ease,
+              color 0.25s ease;
+  user-select: none;
+}
+
+/* Glossy top bubble dome specular reflection on all bubble buttons */
+.bubble-btn::before,
+.contact-btn-glow::before,
+.live-project-btn::before,
+.ghost-btn::before,
+.bubble-btn-primary::before,
+.bubble-btn-ghost::before {
+  content: '';
+  position: absolute;
+  top: 1.5px;
+  left: 10%;
+  right: 10%;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Primary Emerald Bubble Button */
+.contact-btn-glow,
+.bubble-btn-primary {
+  background: linear-gradient(180deg, rgba(52, 211, 153, 0.3) 0%, rgba(16, 185, 129, 0.1) 40%, rgba(4, 120, 87, 0.5) 100%),
+              linear-gradient(135deg, #064E3B 0%, #047857 50%, #10B981 100%);
+  border: 1px solid rgba(52, 211, 153, 0.7);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-bottom: 1.5px solid rgba(4, 120, 87, 0.9);
+  box-shadow: inset 0 2px 3px 0 rgba(255, 255, 255, 0.55),
+              inset 0 -3px 6px 0 rgba(0, 0, 0, 0.45),
+              0 6px 22px rgba(16, 185, 129, 0.35),
+              0 2px 6px rgba(0, 0, 0, 0.4);
+  color: #FFFFFF !important;
+  backdrop-filter: blur(8px);
+}
+
+.contact-btn-glow:hover,
+.bubble-btn-primary:hover {
+  transform: translateY(-3px) scale(1.06);
+  border-color: rgba(110, 231, 183, 1);
+  border-top-color: #FFFFFF;
+  box-shadow: inset 0 2.5px 3px 0 rgba(255, 255, 255, 0.8),
+              inset 0 -3px 7px 0 rgba(0, 0, 0, 0.4),
+              0 12px 32px rgba(16, 185, 129, 0.55),
+              0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.contact-btn-glow:active,
+.bubble-btn-primary:active {
+  transform: translateY(1px) scale(0.95);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6),
+              0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Translucent Obsidian Glass Bubble Button */
+.live-project-btn,
+.ghost-btn,
+.bubble-btn-ghost {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(0, 0, 0, 0.35) 100%),
+              rgba(19, 21, 24, 0.88);
+  border: 1px solid rgba(232, 237, 242, 0.25);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.35),
+              inset 0 -2.5px 5px 0 rgba(0, 0, 0, 0.45),
+              0 4px 16px rgba(0, 0, 0, 0.45);
   color: #E8EDF2;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
 }
 
 .live-project-btn:hover,
-.ghost-btn:hover {
-  background-color: rgba(16, 185, 129, 0.1);
-  border-color: #10B981;
-  color: #10B981;
-  transform: translateY(-1px);
+.ghost-btn:hover,
+.bubble-btn-ghost:hover {
+  transform: translateY(-3px) scale(1.06);
+  border-color: rgba(16, 185, 129, 0.75);
+  border-top-color: rgba(52, 211, 153, 0.95);
+  color: #34D399;
+  box-shadow: inset 0 2px 2.5px 0 rgba(255, 255, 255, 0.5),
+              inset 0 -2.5px 5px 0 rgba(0, 0, 0, 0.4),
+              0 10px 28px rgba(16, 185, 129, 0.35),
+              0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .live-project-btn:active,
-.ghost-btn:active {
-  transform: scale(0.96);
+.ghost-btn:active,
+.bubble-btn-ghost:active {
+  transform: translateY(1px) scale(0.95);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6),
+              0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* Hero Magnet Portrait: Ambient Emerald glow */
@@ -104,25 +181,118 @@ html {
   animation: blink 1s infinite;
 }
 
-/* Dual Opposing Scroll Rows for Certifications */
-.cert-scroll-row {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  will-change: transform;
-  transition: transform 0.05s ease-out;
+/* ==========================================================================
+   Interactive Glow Boxes & Focus-Blur System
+   - Clean, shadowless emerald neon border glow
+   - Subtle cursor-following radial spotlight (no heavy dark drop-shadows)
+   - Sibling Focus Blur: hovered box glows cleanly, all others softly blur
+   ========================================================================== */
+.glow-box,
+.cert-card-interactive,
+.journey-milestone-card {
+  position: relative;
+  transition: border-color 0.3s ease,
+              box-shadow 0.35s ease,
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s ease,
+              opacity 0.35s ease;
+  will-change: transform, filter, opacity, box-shadow;
+  overflow: hidden;
 }
 
-.cert-card-interactive {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Dynamic cursor-following radial spotlight glow */
+.glow-box::after,
+.cert-card-interactive::after,
+.journey-milestone-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.cert-card-interactive:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: rgba(16, 185, 129, 0.6) !important;
-  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.18), 0 5px 15px rgba(0, 0, 0, 0.6);
+/* Active Hover State: Clean Emerald Border Glow & Luminescence (Zero muddy dark shadows) */
+.glow-box:hover,
+.cert-card-interactive:hover,
+.journey-milestone-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: #10B981 !important;
+  box-shadow: 0 0 22px rgba(16, 185, 129, 0.28),
+              0 0 50px rgba(16, 185, 129, 0.1) !important;
+  filter: blur(0px) opacity(1) !important;
+  z-index: 20 !important;
+}
+
+.glow-box:hover::after,
+.cert-card-interactive:hover::after,
+.journey-milestone-card:hover::after {
+  opacity: 1;
+}
+
+/* Big Sticky Project Cards: Clean, Elegant Obsidian Hover without heavy shadows */
+.sticky-project-card {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.sticky-project-card:hover {
+  border-color: rgba(16, 185, 129, 0.45) !important;
+  box-shadow: 0 0 35px rgba(16, 185, 129, 0.12), 0 20px 45px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Specific styling for Skills rows inside white section */
+.skill-expandable-item {
+  position: relative;
+  border-radius: 1.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.25s ease,
+              background 0.25s ease,
+              filter 0.35s ease,
+              opacity 0.35s ease;
+  will-change: transform, filter, opacity;
+}
+
+.skill-expandable-item:hover {
+  background: rgba(16, 185, 129, 0.05) !important;
+  border-color: rgba(16, 185, 129, 0.45) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.12) !important;
+  transform: translateY(-2px) !important;
+  filter: blur(0px) opacity(1) !important;
+  z-index: 10 !important;
+}
+
+/* SIBLING FOCUS BLUR:
+   Only trigger sibling blur on devices with a mouse/pointer (desktop/laptop)
+   so touch devices (phones, iPads, tablets) never get trapped in a blurred state! */
+@media (hover: hover) and (pointer: fine) {
+  .glow-group:hover .glow-box:not(:hover),
+  .glow-group:hover .cert-card-interactive:not(:hover),
+  .glow-group:hover .journey-milestone-card:not(:hover),
+  .glow-group:hover .skill-expandable-item:not(:hover) {
+    filter: blur(3.5px) opacity(0.38) !important;
+    transform: scale(0.985) !important;
+  }
+}
+
+/* Enhanced Cross-Device Responsive Layout Rules */
+@media (max-width: 768px) {
+  .sticky-project-card {
+    border-radius: 28px !important;
+  }
+  .sticky-card-container {
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 2rem !important;
+  }
 }
 
 /* Hide scrollbar utility */
@@ -151,4 +321,98 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #10B981;
+}
+
+/* ==========================================================================
+   Custom Fluid Glowing Cursor
+   ========================================================================== */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.5);
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              opacity 0.25s ease;
+  opacity: 0;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(16, 185, 129, 0.45);
+  background: rgba(16, 185, 129, 0.04);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease,
+              box-shadow 0.25s ease,
+              opacity 0.25s ease;
+  opacity: 0;
+}
+
+/* Cursor Hover State (over interactive links, buttons, cards) */
+.custom-cursor-ring.is-hovering {
+  width: 58px;
+  height: 58px;
+  border-color: rgba(52, 211, 153, 0.9);
+  background-color: rgba(16, 185, 129, 0.16);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.25), inset 0 0 15px rgba(16, 185, 129, 0.12);
+  backdrop-filter: blur(1.5px);
+}
+
+.custom-cursor-dot.is-hovering {
+  width: 4px;
+  height: 4px;
+  background-color: #34D399;
+}
+
+/* Cursor Active / Click State */
+.custom-cursor-ring.is-active {
+  transform: translate(-50%, -50%) scale(0.8);
+  border-color: #34D399;
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+.custom-cursor-dot.is-active {
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+/* Disable Custom Cursor on Touch Devices */
+@media (hover: none) or (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Floating Frosted Top Bar & Scroll Progress
+   ========================================================================== */
+#floating-top-bar.is-scrolled {
+  transform: translate(-50%, 0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.topbar-nav-link.is-active {
+  color: #10B981 !important;
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
 }

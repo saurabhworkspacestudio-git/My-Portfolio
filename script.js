@@ -182,8 +182,8 @@ const projectData = {
   },
   'veeva-pharma': {
     title: 'Sales Cloud & Veeva CRM',
-    subtitle: 'Cognizant · Pharmaceutical Domain',
-    client: 'Cognizant',
+    subtitle: 'AbbVie · Pharmaceutical Domain',
+    client: 'AbbVie',
     domain: 'Pharmaceutical Domain',
     summary: 'Built and automated core sales processes for an enterprise pharmaceutical-domain implementation on Sales Cloud and specialized Veeva CRM platform.',
     deepDive: [

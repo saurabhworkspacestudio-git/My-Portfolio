@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillsExpansion();
   initProjectDetailToggle();
   initFadeInObserver();
-  initCertScrollEffect();
+  initCustomCursor();
+  initTopBar();
+  initCardSpotlight();
 });
 
 /* ==========================================================================
@@ -238,47 +240,221 @@ function initFadeInObserver() {
 }
 
 /* ==========================================================================
-   7. Scroll-Driven Opposing Horizontal Certifications Rows
-   - Scrolling down: Row 1 moves right-to-left, Row 2 moves left-to-right
-   - Scrolling up: Row 1 moves left-to-right, Row 2 moves right-to-left
-   - Smooth requestAnimationFrame interpolation
+   7. Fluid Glowing Custom Cursor
+   - Inner dot: immediate tracking with radiant emerald glow
+   - Outer ring: smooth spring lerp trailing physics
+   - Magnetic hover expansion on links, buttons, and interactive cards
+   - Active click squish and release physics
    ========================================================================== */
-function initCertScrollEffect() {
-  const section = document.getElementById('certifications');
-  const row1 = document.getElementById('cert-row-1');
-  const row2 = document.getElementById('cert-row-2');
-  if (!section || !row1 || !row2) return;
+function initCustomCursor() {
+  const dot = document.getElementById('custom-cursor-dot');
+  const ring = document.getElementById('custom-cursor-ring');
+  if (!dot || !ring) return;
 
-  let ticking = false;
+  // Don't initialize on touch / coarse pointer devices
+  if (window.matchMedia('(hover: none) or (pointer: coarse)').matches) {
+    return;
+  }
 
-  const updateRows = () => {
-    const rect = section.getBoundingClientRect();
-    const windowH = window.innerHeight;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
+  let isVisible = false;
+  const lerpFactor = 0.18; // smooth, responsive trailing
 
-    // Active while near or inside viewport
-    if (rect.bottom >= -150 && rect.top <= windowH + 150) {
-      const totalDistance = windowH + rect.height;
-      const progress = (windowH - rect.top) / totalDistance;
-      const clamped = Math.max(0, Math.min(1, progress));
+  // Track pointer position
+  const onPointerMove = (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-      // Row 1: moves to the left as you scroll down (from +60px to -650px)
-      const offset1 = 60 - clamped * 700;
-      // Row 2: moves to the right as you scroll down (from -650px to +60px)
-      const offset2 = -650 + clamped * 700;
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
 
-      row1.style.transform = `translate3d(${offset1}px, 0, 0)`;
-      row2.style.transform = `translate3d(${offset2}px, 0, 0)`;
+    if (!isVisible) {
+      isVisible = true;
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
     }
-
-    ticking = false;
   };
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateRows);
-      ticking = true;
-    }
-  }, { passive: true });
+  // Smooth animation loop for trailing ring
+  const renderCursor = () => {
+    ringX += (mouseX - ringX) * lerpFactor;
+    ringY += (mouseY - ringY) * lerpFactor;
 
-  updateRows();
+    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+
+    requestAnimationFrame(renderCursor);
+  };
+
+  requestAnimationFrame(renderCursor);
+
+  window.addEventListener('pointermove', onPointerMove, { passive: true });
+
+  // Hide when leaving window
+  document.addEventListener('mouseleave', () => {
+    isVisible = false;
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    isVisible = true;
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+
+  // Click squish effect
+  document.addEventListener('mousedown', () => {
+    ring.classList.add('is-active');
+    dot.classList.add('is-active');
+  });
+
+  document.addEventListener('mouseup', () => {
+    ring.classList.remove('is-active');
+    dot.classList.remove('is-active');
+  });
+
+  // Attach hover states to interactive elements
+  const attachHoverListeners = () => {
+    const interactiveSelectors = 'a, button, input, textarea, select, [role="button"], .cert-card-interactive, .sticky-project-card, .skill-expandable-item, .contact-btn-glow, .live-project-btn, #hero-magnet';
+    const targets = document.querySelectorAll(interactiveSelectors);
+
+    targets.forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('is-hovering');
+        dot.classList.add('is-hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('is-hovering');
+        dot.classList.remove('is-hovering');
+      });
+    });
+  };
+
+  attachHoverListeners();
+}
+
+/* ==========================================================================
+   8. Top Bar Effect & Real-Time Scroll Progress Indicator
+   - Top edge scroll progress bar tracking 0% to 100%
+   - Floating frosted obsidian top bar sliding in when scrolling past Hero
+   - Active section scroll-spy highlighting navigation pills
+   ========================================================================== */
+function initTopBar() {
+  const progressBar = document.getElementById('scroll-progress-bar');
+  const floatingBar = document.getElementById('floating-top-bar');
+  const navLinks = document.querySelectorAll('.topbar-nav-link');
+
+  const sectionIds = ['certifications', 'journey', 'about', 'projects', 'skills', 'contact'];
+  const sections = sectionIds
+    .map((id) => ({ id, el: document.getElementById(id) }))
+    .filter((s) => s.el !== null);
+
+  // Dynamically sort sections by actual vertical position in the page
+  sections.sort((a, b) => a.el.offsetTop - b.el.offsetTop);
+
+  const setActiveNav = (targetId) => {
+    navLinks.forEach((link) => {
+      const sectionAttr = link.getAttribute('data-section');
+      if (sectionAttr === targetId) {
+        link.classList.add('is-active');
+      } else {
+        link.classList.remove('is-active');
+      }
+    });
+  };
+
+  const onScroll = () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const windowH = window.innerHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const docHeight = scrollHeight - windowH;
+
+    // 1. Update Scroll Progress Bar (0% - 100%)
+    if (progressBar && docHeight > 0) {
+      const progressPercent = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
+    // 2. Show / Hide Floating Top Bar on Scroll (> 100px)
+    if (floatingBar) {
+      if (scrollY > 100) {
+        floatingBar.classList.add('is-scrolled');
+      } else {
+        floatingBar.classList.remove('is-scrolled');
+      }
+    }
+
+    // 3. Section Scroll Spy: highlight active nav link
+    if (sections.length && navLinks.length) {
+      let currentSectionId = '';
+
+      // Check if user is scrolled near or at the bottom of the page (Contact/Footer)
+      const isAtBottom = (scrollY + windowH) >= (scrollHeight - 90);
+
+      if (isAtBottom) {
+        currentSectionId = 'contact';
+      } else {
+        // Evaluate sections from bottom to top
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = sections[i];
+          const rect = sec.el.getBoundingClientRect();
+
+          // Threshold for contact section vs regular sections
+          const threshold = (sec.id === 'contact') ? windowH * 0.75 : windowH * 0.45;
+          if (rect.top <= threshold && rect.bottom >= windowH * 0.1) {
+            currentSectionId = sec.id;
+            break;
+          }
+        }
+      }
+
+      setActiveNav(currentSectionId);
+    }
+  };
+
+  // Immediate click response for smooth nav clicks
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', () => {
+      const targetHash = anchor.getAttribute('href');
+      if (targetHash && targetHash.length > 1) {
+        const targetId = targetHash.substring(1);
+        if (sectionIds.includes(targetId)) {
+          setActiveNav(targetId);
+        }
+      }
+    });
+  });
+
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (sectionIds.includes(hash)) {
+      setActiveNav(hash);
+    }
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ==========================================================================
+   8. Card Cursor Spotlight Tracking
+   Sets --mouse-x and --mouse-y on hover so the emerald
+   radial spotlight smoothly follows user cursor position across each card/box.
+   ========================================================================== */
+function initCardSpotlight() {
+  const glowElements = document.querySelectorAll(
+    '.glow-box, .cert-card-interactive, .journey-milestone-card'
+  );
+
+  glowElements.forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      el.style.setProperty('--mouse-x', `${x}px`);
+      el.style.setProperty('--mouse-y', `${y}px`);
+    }, { passive: true });
+  });
 }
