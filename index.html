@@ -1,0 +1,1407 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saurabh Gaikwad — Salesforce Developer</title>
+
+  <!-- Google Fonts: Space Grotesk (headings) & Inter (body) & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0C0D0E',
+            brandCard: '#131518',
+            emeraldAccent: '#10B981',
+            mintAccent: '#34D399',
+            accentText: '#E8EDF2',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-[#0C0D0E] text-[#E8EDF2] font-['Inter',sans-serif] overflow-x-clip select-none m-0 p-0">
+  <div id="root" class="w-full min-h-screen bg-[#0C0D0E] overflow-x-clip">
+
+    <!-- =====================================================================
+         1. HERO SECTION
+         Full viewport height (h-screen), flex column layout, overflowX: clip
+         ===================================================================== -->
+    <section class="relative h-screen w-full flex flex-col justify-between overflow-x-clip bg-[#0C0D0E]">
+      <!-- Navbar: 4 links evenly spaced -->
+      <nav class="w-full flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 z-20 fade-in-element" data-delay="0" style="transform: translateY(-20px);">
+        <a href="#about" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+          About
+        </a>
+        <a href="#certifications" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+          Certifications
+        </a>
+        <a href="#journey" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+          Journey
+        </a>
+        <a href="#projects" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+          Projects
+        </a>
+        <a href="#skills" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+          Skills
+        </a>
+        <a href="#contact" class="text-[#E8EDF2] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] font-heading transition-colors duration-200 hover:text-[#10B981]">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Hero Heading: "Hi, I'm Saurabh" -->
+      <div class="w-full overflow-hidden py-2 sm:py-3 flex justify-center items-center z-0 mt-6 sm:mt-4 md:-mt-5">
+        <h1 class="hero-heading font-black uppercase tracking-[-0.01em] leading-[0.95] whitespace-nowrap w-full text-center text-[9vw] sm:text-[8vw] md:text-[6.5vw] fade-in-element font-heading" data-delay="0.15" style="transform: translateY(40px);">
+          Hi, I&rsquo;m Saurabh
+        </h1>
+      </div>
+
+      <!-- Hero Visual: Magnet-wrapped photo portrait with soft ambient emerald glow -->
+      <div class="absolute left-1/2 -translate-x-1/2 z-10 w-[240px] sm:w-[300px] md:w-[360px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto fade-in-element" data-delay="0.6" style="transform: translate(-50%, 30px);">
+        <div id="hero-magnet" class="w-full inline-block will-change-transform flex justify-center">
+          <div class="relative w-full aspect-[4/5] rounded-[36px] sm:rounded-[44px] overflow-hidden border border-[rgba(232,237,242,0.12)] bg-gradient-to-b from-[#191D24] to-[#0C0D0E] hero-portrait-glow group">
+            <!-- Subtle ambient radial light in emerald -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.18)_0%,transparent_70%)] pointer-events-none"></div>
+
+            <img
+              src="avatar.jpg"
+              alt="Saurabh Gaikwad - Salesforce Developer"
+              class="w-full h-full object-cover object-top filter contrast-[1.03] brightness-95 transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none relative z-10"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0C0D0E] via-transparent to-transparent opacity-75 z-10 pointer-events-none"></div>
+            
+            <div class="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between px-3 py-1.5 rounded-full bg-[#0C0D0E]/90 backdrop-blur-md border border-[rgba(232,237,242,0.12)] text-[11px] sm:text-xs uppercase tracking-widest text-[#E8EDF2] font-heading">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+                Salesforce Dev
+              </span>
+              <span class="text-[#10B981] font-semibold">5x Certified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="w-full flex justify-between items-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 z-20">
+        <!-- Left: Paragraph & Subtext -->
+        <div class="flex flex-col gap-1 max-w-[220px] sm:max-w-[320px] md:max-w-[380px] fade-in-element" data-delay="0.35" style="transform: translateY(20px);">
+          <p class="text-[#E8EDF2] font-light uppercase tracking-wide leading-snug font-heading" style="font-size: clamp(0.75rem, 1.4vw, 1.5rem);">
+            Building Salesforce solutions for real business problems.
+          </p>
+          <span class="text-[#E8EDF2] opacity-60 text-xs md:text-sm font-sans">
+            Salesforce Developer &bull; 4.5 Years &bull; Apex, LWC &amp; Field Service
+          </span>
+        </div>
+
+        <!-- Right: Two buttons (Connect on LinkedIn & View My Work) -->
+        <div class="flex flex-col sm:flex-row items-end sm:items-center gap-3 fade-in-element" data-delay="0.5" style="transform: translateY(20px);">
+          <a
+            href="#projects"
+            class="live-project-btn inline-flex items-center justify-center rounded-full uppercase tracking-widest font-medium px-6 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm font-heading cursor-pointer text-center"
+          >
+            View My Work
+          </a>
+          <a
+            href="https://linkedin.com/in/saurabh-sanjay-gaikwad-02916a1b2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-btn-glow inline-flex items-center justify-center rounded-full font-medium uppercase tracking-widest px-7 py-2.5 sm:px-9 sm:py-3 text-xs sm:text-sm font-heading cursor-pointer text-center"
+          >
+            Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+        <!-- =====================================================================
+         2. CERTIFICATIONS SECTION -- SCROLL-DRIVEN OPPOSING HORIZONTAL ROWS
+         When scrolling down: Row 1 moves right-to-left, Row 2 moves left-to-right
+         Features the 5 official Salesforce badge logos with interactive links
+         ===================================================================== -->
+    <section id="certifications" class="relative w-full bg-[#0C0D0E] pt-24 sm:pt-32 md:pt-40 pb-24 sm:pb-32 select-none overflow-hidden">
+      <!-- Section Header (Help text removed) -->
+      <div class="max-w-7xl mx-auto w-full px-5 sm:px-8 md:px-10 mb-12 sm:mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/25 mb-4">
+          <span class="inline-block w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+          <span class="text-xs uppercase tracking-widest text-[#10B981] font-semibold font-mono">
+            Trailhead Verified Accreditations
+          </span>
+        </div>
+        <h2 class="hero-heading font-black uppercase leading-tight tracking-tight font-heading fade-in-element" data-delay="0" style="transform: translateY(30px); font-size: clamp(2.5rem, 7vw, 90px);">
+          Certifications
+        </h2>
+      </div>
+
+      <!-- Container with Dual Opposing Scrolling Rows -->
+      <div class="relative w-full overflow-hidden flex flex-col gap-6 sm:gap-8">
+        <!-- Row 1: moves horizontally to the left as you scroll down -->
+        <div id="cert-row-1" class="cert-scroll-row pl-5 sm:pl-8 md:pl-10">
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/platform_developer_1.png"
+                    alt="Salesforce Certified Platform Developer I Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  PD-I
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Platform Developer I
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Core Apex programmatic architecture, triggers, visual frameworks, and governor-limit compliant data operations.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/administrator.png"
+                    alt="Salesforce Certified Administrator Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  ADM-201
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Administrator
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Enterprise configuration, role hierarchies, sharing rules, security models, and declarative Flow automation.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/sales_cloud_consultant.png"
+                    alt="Salesforce Certified Sales Cloud Consultant Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  SCC
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Sales Cloud Consultant
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Sales process architecture, lead-to-opportunity lifecycles, forecasting, territory design, and CRM rollouts.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/agentforce_specialist.png"
+                    alt="Salesforce Certified Agentforce Specialist Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  AGENT
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Agentforce Specialist
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Autonomous AI agents, prompt templates, action topics, Data Cloud grounding, and real-time reasoning workflows.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/ai_associate.png"
+                    alt="Salesforce Certified AI Associate Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  AI-ASC
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified AI Associate
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Foundational AI fundamentals, machine learning in CRM, generative models, and ethical AI deployment principles.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/platform_developer_1.png"
+                    alt="Salesforce Certified Platform Developer I Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  PD-I
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Platform Developer I
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Core Apex programmatic architecture, triggers, visual frameworks, and governor-limit compliant data operations.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/administrator.png"
+                    alt="Salesforce Certified Administrator Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  ADM-201
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Administrator
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Enterprise configuration, role hierarchies, sharing rules, security models, and declarative Flow automation.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Row 2: moves horizontally to the right as you scroll down -->
+        <div id="cert-row-2" class="cert-scroll-row pl-5 sm:pl-8 md:pl-10">
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/agentforce_specialist.png"
+                    alt="Salesforce Certified Agentforce Specialist Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  AGENT
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Agentforce Specialist
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Autonomous AI agents, prompt templates, action topics, Data Cloud grounding, and real-time reasoning workflows.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/ai_associate.png"
+                    alt="Salesforce Certified AI Associate Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  AI-ASC
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified AI Associate
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Foundational AI fundamentals, machine learning in CRM, generative models, and ethical AI deployment principles.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/sales_cloud_consultant.png"
+                    alt="Salesforce Certified Sales Cloud Consultant Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  SCC
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Sales Cloud Consultant
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Sales process architecture, lead-to-opportunity lifecycles, forecasting, territory design, and CRM rollouts.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/platform_developer_1.png"
+                    alt="Salesforce Certified Platform Developer I Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  PD-I
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Platform Developer I
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Core Apex programmatic architecture, triggers, visual frameworks, and governor-limit compliant data operations.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/administrator.png"
+                    alt="Salesforce Certified Administrator Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  ADM-201
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Administrator
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Enterprise configuration, role hierarchies, sharing rules, security models, and declarative Flow automation.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/agentforce_specialist.png"
+                    alt="Salesforce Certified Agentforce Specialist Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  AGENT
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified Agentforce Specialist
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Autonomous AI agents, prompt templates, action topics, Data Cloud grounding, and real-time reasoning workflows.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-card-interactive w-[310px] sm:w-[350px] md:w-[380px] shrink-0 rounded-[30px] bg-[#131518] border border-[rgba(232,237,242,0.08)] p-6 flex flex-col justify-between group select-none">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/40 border border-white/5 p-2 flex items-center justify-center overflow-hidden group-hover:border-[#10B981]/40 transition-colors">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.15)_0%,transparent_70%)]"></div>
+                  <img
+                    src="assets/certifications/ai_associate.png"
+                    alt="Salesforce Certified AI Associate Badge"
+                    class="w-full h-full object-contain relative z-10 filter drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#10B981] text-xs font-mono font-bold uppercase tracking-wider">
+                  AI-ASC
+                </span>
+              </div>
+
+              <h3 class="font-bold text-base sm:text-lg text-white font-heading leading-snug group-hover:text-[#34D399] transition-colors">
+                Salesforce Certified AI Associate
+              </h3>
+              <p class="text-xs sm:text-sm text-[#E8EDF2]/65 font-sans mt-2.5 font-light leading-relaxed">
+                Foundational AI fundamentals, machine learning in CRM, generative models, and ethical AI deployment principles.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-5 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-[11px] font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Verified
+              </span>
+              <a
+                href="https://www.salesforce.com/trailblazer/sgaikwad1997"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#10B981] hover:text-white transition-colors flex items-center gap-1 font-semibold group-hover:translate-x-1 duration-200 pointer-events-auto"
+              >
+                Verify &rarr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. JOURNEY SECTION — CAREER TIMELINE
+         Connected by thin emerald line with obsidian cards
+         ===================================================================== -->
+    <section id="journey" class="relative w-full bg-[#0C0D0E] px-5 sm:px-8 md:px-10 py-20 sm:py-28 select-none">
+      <div class="max-w-6xl mx-auto w-full">
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 sm:mb-20 gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-[#10B981] font-semibold font-mono">Experience &bull; Career Path</span>
+            <h2 class="hero-heading font-black uppercase leading-none tracking-tight text-3xl sm:text-5xl md:text-6xl mt-2 font-heading">
+              Career Journey
+            </h2>
+          </div>
+          <p class="text-[#E8EDF2] opacity-60 text-sm sm:text-base max-w-md font-light">
+            Each milestone connected along a timeline of continuous learning, complex CRM architectures, and enterprise delivery.
+          </p>
+        </div>
+
+        <!-- Timeline Grid with Connecting Line -->
+        <div class="relative">
+          <div class="hidden md:block absolute top-10 left-6 right-6 h-[1.5px] bg-[#10B981]/25 z-0"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-5 relative z-10">
+            <!-- 1 -->
+            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-[#10B981] font-heading">2021</span>
+                <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
+              </div>
+              <div class="mt-8">
+                <h4 class="font-medium text-base sm:text-lg text-white font-heading uppercase leading-tight">
+                  B.E. Computer Engineering
+                </h4>
+                <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
+                  JSPM&apos;s Imperial College of Engineering and Research, Pune.
+                </p>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0.12">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-[#10B981] font-heading">Jul 2021</span>
+                <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
+              </div>
+              <div class="mt-8">
+                <h4 class="font-medium text-base sm:text-lg text-white font-heading uppercase leading-tight">
+                  Cognizant Tech Solutions
+                </h4>
+                <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
+                  Joined as Salesforce Developer, kicking off deep enterprise cloud specialization.
+                </p>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0.24">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-[#10B981] font-heading">Sales Cloud</span>
+                <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
+              </div>
+              <div class="mt-8">
+                <h4 class="font-medium text-base sm:text-lg text-white font-heading uppercase leading-tight">
+                  Veeva CRM &bull; Pharma
+                </h4>
+                <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
+                  Pharmaceutical domain: Apex, Triggers, LWC, Flows, Validation Rules, and data migration.
+                </p>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="fade-in-element rounded-3xl border border-[rgba(232,237,242,0.08)] bg-[#131518] p-6 flex flex-col justify-between hover:border-[#10B981]/40 transition-all duration-300 group" data-delay="0.36">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-[#10B981] font-heading">Mar 2026</span>
+                <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/20"></span>
+              </div>
+              <div class="mt-8">
+                <h4 class="font-medium text-base sm:text-lg text-white font-heading uppercase leading-tight">
+                  Field Service (Bayer)
+                </h4>
+                <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
+                  Moved onto Bayer&apos;s global Field Service (FSL) implementation, Manufacturing domain.
+                </p>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="fade-in-element rounded-3xl border border-[#10B981]/40 bg-gradient-to-b from-[#191D24] to-[#131518] p-6 flex flex-col justify-between group" data-delay="0.48">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-white font-heading">Today</span>
+                <span class="w-3 h-3 rounded-full bg-[#10B981] ring-4 ring-[#10B981]/40 animate-ping"></span>
+              </div>
+              <div class="mt-8">
+                <h4 class="font-medium text-base sm:text-lg text-white font-heading uppercase leading-tight">
+                  Still Learning &bull; Building
+                </h4>
+                <p class="text-xs text-[#E8EDF2] opacity-75 mt-2 font-light leading-relaxed">
+                  5x Certified Trailblazer advancing into Agentforce AI, Async Apex, and modern architectures.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. ABOUT SECTION
+         Full-height centered section, min-h-screen.
+         4 decorative developer-relevant visuals with emerald accents.
+         ===================================================================== -->
+    <section id="about" class="relative min-h-screen w-full bg-[#0C0D0E] flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden select-none">
+      
+      <!-- Top-Left: Code Editor Window Mockup -->
+      <div class="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] z-10 pointer-events-none fade-in-element" data-delay="0.1" style="transform: translateX(-80px);">
+        <div class="w-[120px] sm:w-[160px] md:w-[210px] rounded-xl bg-[#131518] border border-[rgba(232,237,242,0.12)] p-2.5 sm:p-3 shadow-xl backdrop-blur-md">
+          <div class="flex items-center gap-1.5 pb-2 border-b border-white/10">
+            <span class="w-2 h-2 rounded-full bg-[#EF4444] opacity-80"></span>
+            <span class="w-2 h-2 rounded-full bg-[#F59E0B] opacity-80"></span>
+            <span class="w-2 h-2 rounded-full bg-[#10B981] opacity-80"></span>
+            <span class="text-[9px] font-mono text-[#E8EDF2]/50 ml-1 truncate">CaseTrigger.cls</span>
+          </div>
+          <div class="mt-2 space-y-1 font-mono text-[9px] sm:text-[10px] text-[#E8EDF2]/80 leading-snug">
+            <div class="text-[#10B981]">trigger CaseTrigger on Case</div>
+            <div class="text-[#E8EDF2]/60">(before insert) {</div>
+            <div class="pl-2 text-[#34D399]">Handler.execute();</div>
+            <div class="text-[#E8EDF2]/60">}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom-Left: Salesforce Cloud Logo Badge -->
+      <div class="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] z-10 pointer-events-none fade-in-element" data-delay="0.25" style="transform: translateX(-80px);">
+        <div class="w-[100px] sm:w-[140px] md:w-[180px] rounded-2xl bg-gradient-to-br from-[#191D24] to-[#131518] border border-[rgba(16,185,129,0.3)] p-4 shadow-xl flex flex-col items-center justify-center gap-2">
+          <svg class="w-10 h-10 sm:w-12 sm:h-12 text-[#10B981]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+          </svg>
+          <span class="text-[10px] sm:text-xs font-heading font-semibold uppercase tracking-wider text-white">Salesforce</span>
+        </div>
+      </div>
+
+      <!-- Top-Right: Certification Ribbon Badge -->
+      <div class="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] z-10 pointer-events-none fade-in-element" data-delay="0.15" style="transform: translateX(80px);">
+        <div class="w-[120px] sm:w-[160px] md:w-[210px] rounded-2xl bg-[#131518] border border-[rgba(16,185,129,0.3)] p-3 shadow-xl flex items-center gap-3 backdrop-blur-md">
+          <div class="w-9 h-9 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 flex items-center justify-center text-[#10B981]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 011.397.893v5.604a1 1 0 01-.553.894L11 15.677V18a1 1 0 11-2 0v-2.323l-6.397-3.186A1 1 0 012 11.598V5.994a1 1 0 011.397-.893l1.599.8L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[9px] uppercase font-mono text-[#10B981] font-semibold">Certified</span>
+            <span class="text-xs font-heading font-bold text-white leading-tight">5x Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom-Right: Terminal/CLI Card with Blinking Cursor -->
+      <div class="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] z-10 pointer-events-none fade-in-element" data-delay="0.3" style="transform: translateX(80px);">
+        <div class="w-[130px] sm:w-[170px] md:w-[220px] rounded-xl bg-[#090B0D] border border-[rgba(232,237,242,0.12)] p-3 shadow-xl font-mono text-[9px] sm:text-[10px]">
+          <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-white/10 text-white/40">
+            <span>bash &bull; sf-cli</span>
+            <span class="text-[#10B981]">online</span>
+          </div>
+          <div class="text-[#E8EDF2]/80">$ sf project deploy</div>
+          <div class="text-[#10B981] mt-1">&check; 124 components</div>
+          <div class="mt-1 text-[#10B981] flex items-center gap-1">
+            <span>ready</span>
+            <span class="inline-block w-1.5 h-3 bg-[#10B981] animate-blink"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Centered Content -->
+      <div class="relative z-20 flex flex-col items-center max-w-4xl mx-auto w-full">
+        <!-- Heading: "About Me" -->
+        <h2 class="hero-heading font-black uppercase leading-none tracking-tight text-center whitespace-nowrap mb-10 sm:mb-14 md:mb-16 fade-in-element font-heading" data-delay="0" style="transform: translateY(40px); font-size: clamp(3rem, 10vw, 130px);">
+          About Me
+        </h2>
+
+        <!-- Character-by-Character Animated Text -->
+        <div class="mb-16 sm:mb-20 md:mb-24 px-4 w-full flex justify-center">
+          <p id="about-animated-text" class="font-medium text-center leading-relaxed max-w-[560px] font-heading" style="font-size: clamp(1rem, 2vw, 1.35rem);">
+            With over four and a half years building on Salesforce, i focus on Apex, Lightning Web Components, and Field Service solutions, i truly enjoy solving real business problems for enterprise teams. Let's build something useful together!
+          </p>
+        </div>
+
+        <!-- Contact Button -->
+        <div class="fade-in-element" data-delay="0.2" style="transform: translateY(30px);">
+          <button
+            type="button"
+            onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+            class="contact-btn-glow rounded-full font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base font-heading cursor-pointer"
+          >
+            Say Hello
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. PROJECTS SECTION — STICKY STACKING CARDS
+         Obsidian background (#0C0D0E), pulled up with -mt-10 sm:-mt-12 md:-mt-14.
+         2 Project Cards scaling down smoothly on scroll.
+         ===================================================================== -->
+    <section id="projects" class="relative w-full bg-[#0C0D0E] z-10 px-5 sm:px-8 md:px-10 pt-24 sm:pt-32 pb-32 select-none">
+      <div class="max-w-6xl mx-auto w-full">
+        <!-- Section Heading: "Projects" -->
+        <h2 class="hero-heading font-black uppercase text-center leading-none tracking-tight mb-20 sm:mb-24 md:mb-32 fade-in-element font-heading" data-delay="0" style="transform: translateY(30px); font-size: clamp(3rem, 12vw, 160px);">
+          Projects
+        </h2>
+
+        <!-- Cards Stack -->
+        <div class="relative flex flex-col pb-20">
+          
+          <!-- Card 01: Salesforce Field Service (Bayer) -->
+          <div class="sticky-card-container h-[85vh] flex items-start justify-center sticky top-24 md:top-32" style="top: calc(5rem + 0px);">
+            <div class="sticky-project-card w-full max-w-6xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[rgba(232,237,242,0.12)] bg-[#131518] p-4 sm:p-6 md:p-8 flex flex-col gap-6 shadow-[0_30px_60px_rgba(0,0,0,0.9)] will-change-transform transition-transform duration-100 ease-out">
+              
+              <!-- Card Header -->
+              <div class="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-white/10">
+                <div class="flex items-baseline gap-4 sm:gap-6">
+                  <span class="font-black text-[#E8EDF2] leading-none tracking-tight font-heading" style="font-size: clamp(2.5rem, 6vw, 5rem);">01</span>
+                  <div class="flex flex-col">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#10B981]/20 border border-[#10B981]/40 text-[#34D399] text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-ping"></span>
+                        Current Project
+                      </span>
+                      <span class="text-xs uppercase tracking-widest text-[#10B981] font-semibold font-mono">Bayer &bull; Manufacturing Domain</span>
+                    </div>
+                    <h3 class="text-lg sm:text-2xl md:text-3xl font-medium uppercase text-[#E8EDF2] tracking-tight font-heading">
+                      Salesforce Field Service
+                    </h3>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  data-target="project-1-details"
+                  class="project-details-btn live-project-btn inline-flex items-center justify-center rounded-full uppercase tracking-widest font-medium px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base font-heading cursor-pointer"
+                >
+                  View Details
+                </button>
+              </div>
+
+              <!-- Bottom Row: 2-Column Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 h-full">
+                <!-- Left Column (40% width): 2 stacked diagram / architecture mockups -->
+                <div class="md:col-span-5 flex flex-col gap-4">
+                  <!-- Left Top Tile: FSL Object Model Diagram -->
+                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(130px, 16vw, 230px);">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">FSL Object Architecture</span>
+                      <span class="text-xs text-white/40 font-mono">UML</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-2">
+                      <div class="rounded-xl bg-[#131518] border border-[#10B981]/30 p-2 text-center text-[10px] font-mono font-semibold text-white">Work Order</div>
+                      <div class="rounded-xl bg-[#131518] border border-[#10B981]/30 p-2 text-center text-[10px] font-mono font-semibold text-white">Asset</div>
+                      <div class="rounded-xl bg-[#131518] border border-[#10B981]/30 p-2 text-center text-[10px] font-mono font-semibold text-white">Service Appt</div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#34D399] font-mono text-[10px]">Apex</span>
+                      <span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#34D399] font-mono text-[10px]">LWC</span>
+                      <span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#34D399] font-mono text-[10px]">SOQL</span>
+                    </div>
+                  </div>
+
+                  <!-- Left Bottom Tile: Governor Limits & Flow Metrics -->
+                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(160px, 22vw, 340px);">
+                    <div>
+                      <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">Performance &bull; Governor Limits</span>
+                      <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
+                        Contributing to a global Field Service (FSL) implementation, building and enhancing solutions across the core FSL object model.
+                      </p>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-[#131518]/90 border border-white/5 space-y-1.5 text-[11px] font-mono text-[#E8EDF2]/80">
+                      <div class="flex justify-between"><span>SOQL Queries:</span><span class="text-[#10B981]">Batched &bull; Compliant</span></div>
+                      <div class="flex justify-between"><span>DML Statements:</span><span class="text-[#10B981]">Bulkified</span></div>
+                      <div class="flex justify-between"><span>Trigger Recursion:</span><span class="text-[#10B981]">Handled</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Column (60% width): 1 tall detailed card -->
+                <div class="md:col-span-7 h-full">
+                  <div class="w-full h-full min-h-[260px] md:min-h-[400px] rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-gradient-to-br from-[#191D24] to-[#0C0D0E] p-6 sm:p-8 border border-[rgba(232,237,242,0.12)] flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <span class="text-xs uppercase tracking-widest text-[#10B981] font-bold font-mono">Core Project Deliverables</span>
+                        <div class="flex gap-1.5">
+                          <span class="px-2 py-0.5 rounded-full bg-[#10B981]/20 text-[#34D399] text-[10px] font-mono">Field Service (FSL)</span>
+                          <span class="px-2 py-0.5 rounded-full bg-[#10B981]/20 text-[#34D399] text-[10px] font-mono">Flows</span>
+                        </div>
+                      </div>
+
+                      <ul class="mt-4 space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base font-light text-[#E8EDF2]/90 leading-relaxed">
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Developed and enhanced Lightning Web Components (LWC) to improve Field Service user experience.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Implemented Apex Classes and Triggers across Work Orders, Assets, Equipment, and Service Appointments.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Built Record-Triggered Flows and Validation Rules to automate business processes and improve data quality.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Optimized SOQL queries and Apex logic following governor limit best practices.</span>
+                        </li>
+                      </ul>
+
+                      <!-- Accordion Extra Info -->
+                      <div id="project-1-details" class="hidden mt-4 pt-4 border-t border-white/10 text-xs text-[#E8EDF2]/70 font-mono bg-[#0C0D0E]/60 p-4 rounded-2xl">
+                        <div class="font-bold text-[#10B981] uppercase mb-1">Architecture Highlights:</div>
+                        <div>Enterprise FSL dispatch optimization with zero trigger recursion and asynchronous future methods for large asset inventories.</div>
+                      </div>
+                    </div>
+
+                    <div class="pt-4 flex items-center justify-between text-xs font-mono text-[#E8EDF2]/50 border-t border-white/10">
+                      <span>CLIENT: BAYER</span>
+                      <span>DOMAIN: MANUFACTURING</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Card 02: Sales Cloud & Veeva CRM (Pharmaceutical Domain) -->
+          <div class="sticky-card-container h-[85vh] flex items-start justify-center sticky top-24 md:top-32" style="top: calc(5rem + 28px);">
+            <div class="sticky-project-card w-full max-w-6xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[rgba(232,237,242,0.12)] bg-[#131518] p-4 sm:p-6 md:p-8 flex flex-col gap-6 shadow-[0_30px_60px_rgba(0,0,0,0.9)] will-change-transform transition-transform duration-100 ease-out">
+              
+              <!-- Card Header -->
+              <div class="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-white/10">
+                <div class="flex items-baseline gap-4 sm:gap-6">
+                  <span class="font-black text-[#E8EDF2] leading-none tracking-tight font-heading" style="font-size: clamp(2.5rem, 6vw, 5rem);">02</span>
+                  <div class="flex flex-col">
+                    <span class="text-xs uppercase tracking-widest text-[#10B981] font-semibold font-mono">Pharmaceutical Domain</span>
+                    <h3 class="text-lg sm:text-2xl md:text-3xl font-medium uppercase text-[#E8EDF2] tracking-tight font-heading">
+                      Sales Cloud &amp; Veeva CRM
+                    </h3>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  data-target="project-2-details"
+                  class="project-details-btn live-project-btn inline-flex items-center justify-center rounded-full uppercase tracking-widest font-medium px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base font-heading cursor-pointer"
+                >
+                  View Details
+                </button>
+              </div>
+
+              <!-- Bottom Row: 2-Column Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 h-full">
+                <!-- Left Column (40% width): 2 stacked diagram / architecture mockups -->
+                <div class="md:col-span-5 flex flex-col gap-4">
+                  <!-- Left Top Tile: Data Migration Diagram -->
+                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(130px, 16vw, 230px);">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">Data Loader Migration</span>
+                      <span class="text-xs text-white/40 font-mono">ETL</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 py-2">
+                      <div class="rounded-xl bg-[#131518] border border-[#10B981]/30 p-2 text-center text-[10px] font-mono font-semibold text-white">Legacy DB</div>
+                      <div class="rounded-xl bg-[#131518] border border-[#10B981]/30 p-2 text-center text-[10px] font-mono font-semibold text-white">Veeva CRM</div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#34D399] font-mono text-[10px]">Data Loader</span>
+                      <span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#34D399] font-mono text-[10px]">Veeva</span>
+                    </div>
+                  </div>
+
+                  <!-- Left Bottom Tile: Automation & Compliance Metrics -->
+                  <div class="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-[#0C0D0E] border border-[rgba(232,237,242,0.08)] p-5 flex flex-col justify-between" style="height: clamp(160px, 22vw, 340px);">
+                    <div>
+                      <span class="text-[10px] uppercase tracking-widest text-[#10B981] font-mono font-bold">Compliance &bull; Mentorship</span>
+                      <p class="text-xs text-[#E8EDF2] opacity-60 mt-2 font-light leading-relaxed">
+                        Built and automated core sales processes for a pharmaceutical-domain implementation on Sales Cloud and Veeva CRM.
+                      </p>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-[#131518]/90 border border-white/5 space-y-1.5 text-[11px] font-mono text-[#E8EDF2]/80">
+                      <div class="flex justify-between"><span>Data Accuracy:</span><span class="text-[#10B981]">High Integrity</span></div>
+                      <div class="flex justify-between"><span>Process Automation:</span><span class="text-[#10B981]">Flows &amp; Rules</span></div>
+                      <div class="flex justify-between"><span>Mentorship:</span><span class="text-[#10B981]">Code Reviews</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Column (60% width): 1 tall detailed card -->
+                <div class="md:col-span-7 h-full">
+                  <div class="w-full h-full min-h-[260px] md:min-h-[400px] rounded-[30px] sm:rounded-[40px] md:rounded-[50px] bg-gradient-to-br from-[#191D24] to-[#0C0D0E] p-6 sm:p-8 border border-[rgba(232,237,242,0.12)] flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <span class="text-xs uppercase tracking-widest text-[#10B981] font-bold font-mono">Core Project Deliverables</span>
+                        <div class="flex gap-1.5">
+                          <span class="px-2 py-0.5 rounded-full bg-[#10B981]/20 text-[#34D399] text-[10px] font-mono">Apex</span>
+                          <span class="px-2 py-0.5 rounded-full bg-[#10B981]/20 text-[#34D399] text-[10px] font-mono">LWC</span>
+                        </div>
+                      </div>
+
+                      <ul class="mt-4 space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base font-light text-[#E8EDF2]/90 leading-relaxed">
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Developed Apex, Triggers, and Lightning Web Components for Sales Cloud and Veeva CRM.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Configured business process automation using Flows and Validation Rules.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Performed bulk data migration using Data Loader with high data accuracy.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                          <span class="text-[#10B981] text-lg font-mono">&bull;</span>
+                          <span>Mentored junior developers and contributed to technical discussions and code reviews.</span>
+                        </li>
+                      </ul>
+
+                      <!-- Accordion Extra Info -->
+                      <div id="project-2-details" class="hidden mt-4 pt-4 border-t border-white/10 text-xs text-[#E8EDF2]/70 font-mono bg-[#0C0D0E]/60 p-4 rounded-2xl">
+                        <div class="font-bold text-[#10B981] uppercase mb-1">Architecture Highlights:</div>
+                        <div>Strict 21 CFR Part 11 compliant audit trail automation and custom LWC interfaces accelerating field sales operations.</div>
+                      </div>
+                    </div>
+
+                    <div class="pt-4 flex items-center justify-between text-xs font-mono text-[#E8EDF2]/50 border-t border-white/10">
+                      <span>CLIENT: COGNIZANT</span>
+                      <span>DOMAIN: PHARMACEUTICAL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. SKILLS SECTION
+         White background (#FFFFFF), top corners rounded-t.
+         5 clickable categories expanding to reveal emerald chips.
+         ===================================================================== -->
+    <section id="skills" class="relative w-full bg-[#FFFFFF] text-[#0C0D0E] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-28 select-none z-20">
+      <div class="max-w-5xl mx-auto w-full">
+        <!-- Heading -->
+        <h2 class="font-black uppercase text-[#0C0D0E] text-center leading-none tracking-tight mb-16 sm:mb-20 md:mb-28 fade-in-element font-heading" data-delay="0" style="transform: translateY(30px); font-size: clamp(3rem, 12vw, 160px);">
+          Skills
+        </h2>
+
+        <!-- Vertical List with Expandable Chips on Click -->
+        <div class="flex flex-col border-t border-[rgba(12,13,14,0.15)]">
+          
+          <!-- Category 01: Platform -->
+          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.1" style="transform: translateY(25px);">
+            <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
+              <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
+                01
+              </div>
+              <div class="flex flex-col gap-2 flex-grow">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-medium uppercase tracking-tight text-[#0C0D0E] leading-tight font-heading" style="font-size: clamp(1rem, 2.2vw, 2.1rem);">
+                    Platform
+                  </h3>
+                  <span class="skill-chevron text-xs font-mono text-[#10B981] font-semibold">▼ Expand</span>
+                </div>
+                <p class="font-light leading-relaxed text-[#0C0D0E] opacity-60 text-sm sm:text-base">
+                  Specialized enterprise clouds and mission-critical object architectures.
+                </p>
+              </div>
+            </div>
+            <!-- Expanded Chips Row -->
+            <div class="skill-chips hidden flex-wrap gap-2.5 mt-6 pt-4 border-t border-[#0C0D0E]/10">
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Sales Cloud</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Service Cloud</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Salesforce Field Service (FSL)</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Veeva CRM</span>
+            </div>
+          </div>
+
+          <!-- Category 02: Development -->
+          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.2" style="transform: translateY(25px);">
+            <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
+              <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
+                02
+              </div>
+              <div class="flex flex-col gap-2 flex-grow">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-medium uppercase tracking-tight text-[#0C0D0E] leading-tight font-heading" style="font-size: clamp(1rem, 2.2vw, 2.1rem);">
+                    Development
+                  </h3>
+                  <span class="skill-chevron text-xs font-mono text-[#10B981] font-semibold">▼ Expand</span>
+                </div>
+                <p class="font-light leading-relaxed text-[#0C0D0E] opacity-60 text-sm sm:text-base">
+                  Custom programmatic engineering across front-end and back-end logic.
+                </p>
+              </div>
+            </div>
+            <!-- Expanded Chips Row -->
+            <div class="skill-chips hidden flex-wrap gap-2.5 mt-6 pt-4 border-t border-[#0C0D0E]/10">
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Apex</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Lightning Web Components (LWC)</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">JavaScript</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">SOQL</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">SOSL</span>
+            </div>
+          </div>
+
+          <!-- Category 03: Automation -->
+          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.3" style="transform: translateY(25px);">
+            <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
+              <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
+                03
+              </div>
+              <div class="flex flex-col gap-2 flex-grow">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-medium uppercase tracking-tight text-[#0C0D0E] leading-tight font-heading" style="font-size: clamp(1rem, 2.2vw, 2.1rem);">
+                    Automation
+                  </h3>
+                  <span class="skill-chevron text-xs font-mono text-[#10B981] font-semibold">▼ Expand</span>
+                </div>
+                <p class="font-light leading-relaxed text-[#0C0D0E] opacity-60 text-sm sm:text-base">
+                  Declarative and programmatic workflows, business rules, and trigger frameworks.
+                </p>
+              </div>
+            </div>
+            <!-- Expanded Chips Row -->
+            <div class="skill-chips hidden flex-wrap gap-2.5 mt-6 pt-4 border-t border-[#0C0D0E]/10">
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Flows</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Triggers</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Validation Rules</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Workflow Rules</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Process Builder</span>
+            </div>
+          </div>
+
+          <!-- Category 04: Integration -->
+          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.4" style="transform: translateY(25px);">
+            <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
+              <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
+                04
+              </div>
+              <div class="flex flex-col gap-2 flex-grow">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-medium uppercase tracking-tight text-[#0C0D0E] leading-tight font-heading" style="font-size: clamp(1rem, 2.2vw, 2.1rem);">
+                    Integration
+                  </h3>
+                  <span class="skill-chevron text-xs font-mono text-[#10B981] font-semibold">▼ Expand</span>
+                </div>
+                <p class="font-light leading-relaxed text-[#0C0D0E] opacity-60 text-sm sm:text-base">
+                  External connectivity, RESTful interfaces, and secure data contracts.
+                </p>
+              </div>
+            </div>
+            <!-- Expanded Chips Row -->
+            <div class="skill-chips hidden flex-wrap gap-2.5 mt-6 pt-4 border-t border-[#0C0D0E]/10">
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">REST API</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">JSON</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Postman</span>
+            </div>
+          </div>
+
+          <!-- Category 05: Tools -->
+          <div class="skill-expandable-item fade-in-element border-b border-[rgba(12,13,14,0.15)] py-8 sm:py-10 md:py-12" data-delay="0.5" style="transform: translateY(25px);">
+            <div class="skill-trigger flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 cursor-pointer group">
+              <div class="font-black text-[#0C0D0E] leading-none shrink-0 tracking-tight font-heading group-hover:text-[#10B981] transition-colors" style="font-size: clamp(3rem, 10vw, 140px);">
+                05
+              </div>
+              <div class="flex flex-col gap-2 flex-grow">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-medium uppercase tracking-tight text-[#0C0D0E] leading-tight font-heading" style="font-size: clamp(1rem, 2.2vw, 2.1rem);">
+                    Tools
+                  </h3>
+                  <span class="skill-chevron text-xs font-mono text-[#10B981] font-semibold">▼ Expand</span>
+                </div>
+                <p class="font-light leading-relaxed text-[#0C0D0E] opacity-60 text-sm sm:text-base">
+                  Professional toolbelt for CI/CD, local development, and metadata operations.
+                </p>
+              </div>
+            </div>
+            <!-- Expanded Chips Row -->
+            <div class="skill-chips hidden flex-wrap gap-2.5 mt-6 pt-4 border-t border-[#0C0D0E]/10">
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Git</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Salesforce DX</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">VS Code</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Data Loader</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Workbench</span>
+              <span class="px-4 py-2 rounded-full border border-[rgba(16,185,129,0.35)] bg-[#10B981]/10 text-[#0C0D0E] font-medium text-xs sm:text-sm uppercase tracking-wider font-heading">Salesforce Inspector</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         7. CONTACT SECTION
+         Closing line: "Let's build something useful." with emerald glow button
+         ===================================================================== -->
+    <footer id="contact" class="relative w-full bg-[#0C0D0E] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-30 py-20 px-6 sm:px-10 border-t border-[rgba(232,237,242,0.08)] flex flex-col items-center justify-center text-center gap-8 select-none">
+      <span class="text-xs uppercase tracking-widest text-[#10B981] font-semibold font-mono">Get in Touch</span>
+      
+      <!-- Closing line -->
+      <h3 class="hero-heading font-black uppercase tracking-tight leading-none fade-in-element font-heading" data-delay="0" style="transform: translateY(20px); font-size: clamp(2.5rem, 8vw, 6rem);">
+        Let&apos;s build something useful.
+      </h3>
+
+      <!-- Contact Button: label "Say Hello" -->
+      <div class="fade-in-element" data-delay="0.1" style="transform: translateY(20px);">
+        <button
+          type="button"
+          onclick="window.location.href='mailto:saurabhgaikwad2097@gmail.com'"
+          class="contact-btn-glow rounded-full font-medium uppercase tracking-widest px-8 py-3.5 sm:px-10 sm:py-4 text-xs sm:text-sm md:text-base font-heading cursor-pointer"
+        >
+          Say Hello
+        </button>
+      </div>
+
+      <!-- Links: LinkedIn, Trailhead, Email, Resume -->
+      <div class="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs sm:text-sm uppercase tracking-wider text-[#E8EDF2]/70 font-heading">
+        <a href="https://linkedin.com/in/saurabh-sanjay-gaikwad-02916a1b2" target="_blank" rel="noopener noreferrer" class="hover:text-[#10B981] transition-colors flex items-center gap-1">
+          LinkedIn &rarr;
+        </a>
+        <a href="https://www.salesforce.com/trailblazer/sgaikwad1997" target="_blank" rel="noopener noreferrer" class="hover:text-[#10B981] transition-colors flex items-center gap-1">
+          Trailhead &rarr;
+        </a>
+        <a href="mailto:saurabhgaikwad2097@gmail.com" class="hover:text-[#10B981] transition-colors">
+          saurabhgaikwad2097@gmail.com
+        </a>
+        <a href="assets/Saurabh_Gaikwad_Resume.pdf" download class="hover:text-[#34D399] transition-colors flex items-center gap-1 font-semibold text-[#10B981]">
+          Resume.pdf &darr;
+        </a>
+      </div>
+
+      <div class="pt-8 text-[#E8EDF2]/40 text-xs uppercase tracking-widest font-mono">
+        &copy; 2026 Saurabh Gaikwad &bull; Salesforce Developer &bull; All Rights Reserved
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Main Interaction Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

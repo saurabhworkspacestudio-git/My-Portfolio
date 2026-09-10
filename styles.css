@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  background-color: #0C0D0E;
+  color: #E8EDF2;
+  font-family: 'Inter', sans-serif;
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero Heading: Platinum to Cyber Emerald Mint Gradient */
+.hero-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(180deg, #FFFFFF 20%, #34D399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Contact Button: Emerald Pill with Ambient Glow */
+.contact-btn-glow {
+  background: linear-gradient(135deg, #064E3B 0%, #047857 50%, #10B981 100%);
+  box-shadow: 0px 4px 15px rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #FFFFFF;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-btn-glow:hover {
+  border-color: rgba(52, 211, 153, 0.8);
+  box-shadow: 0px 6px 22px rgba(16, 185, 129, 0.4);
+  transform: translateY(-1px);
+}
+
+.contact-btn-glow:active {
+  transform: scale(0.97);
+}
+
+/* Ghost / Live Project Button */
+.live-project-btn,
+.ghost-btn {
+  border: 1.5px solid rgba(232, 237, 242, 0.3);
+  color: #E8EDF2;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.live-project-btn:hover,
+.ghost-btn:hover {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: #10B981;
+  color: #10B981;
+  transform: translateY(-1px);
+}
+
+.live-project-btn:active,
+.ghost-btn:active {
+  transform: scale(0.96);
+}
+
+/* Hero Magnet Portrait: Ambient Emerald glow */
+.hero-portrait-glow {
+  box-shadow: 0 0 50px rgba(16, 185, 129, 0.2), 0 20px 40px rgba(0, 0, 0, 0.85);
+}
+
+/* Scroll Fade In Utility */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-element.is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* Blinking Cursor for Terminal Graphic */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Dual Opposing Scroll Rows for Certifications */
+.cert-scroll-row {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+  transition: transform 0.05s ease-out;
+}
+
+.cert-card-interactive {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-card-interactive:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(16, 185, 129, 0.6) !important;
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.18), 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Scrollbar for Main Page */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0C0D0E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E2229;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+}
