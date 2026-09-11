@@ -229,6 +229,13 @@ function initFadeInObserver() {
           const delay = entry.target.getAttribute('data-delay') || '0';
           entry.target.style.transitionDelay = `${delay}s`;
           entry.target.classList.add('is-visible');
+          if (entry.target.style.transform) {
+            if (entry.target.style.transform.includes('-50%')) {
+              entry.target.style.transform = 'translate(-50%, -50%)';
+            } else {
+              entry.target.style.transform = 'translate(0, 0)';
+            }
+          }
           observer.unobserve(entry.target);
         }
       });
@@ -377,9 +384,9 @@ function initTopBar() {
       progressBar.style.width = `${progressPercent}%`;
     }
 
-    // 2. Show / Hide Floating Top Bar on Scroll (> 100px)
+    // 2. Compact / Highlight Floating Top Bar on Scroll (> 30px)
     if (floatingBar) {
-      if (scrollY > 100) {
+      if (scrollY > 30) {
         floatingBar.classList.add('is-scrolled');
       } else {
         floatingBar.classList.remove('is-scrolled');
