@@ -56,12 +56,13 @@ Do NOT dump the full resume. Each card = short summary + 4 key bullets + tech ta
 - Tags: `Apex` `LWC` `Data Loader` `Veeva CRM`
 
 ### 4. Certifications Section (prominent)
-Five badge-style cards in a row/grid:
-1. Salesforce Certified Platform Developer I
-2. Salesforce Certified Administrator
-3. Salesforce Certified Sales Cloud Consultant
-4. Salesforce Certified Agentforce Specialist
-5. Salesforce Certified AI Associate
+Six badge-style cards in a row/grid:
+1. Salesforce Certified Platform Developer II
+2. Salesforce Certified Platform Developer I
+3. Salesforce Certified Administrator
+4. Salesforce Certified Sales Cloud Consultant
+5. Salesforce Certified Agentforce Specialist
+6. Salesforce Certified AI Associate
 
 Each card: certification name + a "Verify" link. Link all cards to the Trailblazer profile for now: `https://www.salesforce.com/trailblazer/sgaikwad1997` (swap in individual credential verify links later if/when available).
 

@@ -55,7 +55,7 @@ export const AboutSection: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <span className="text-[9px] uppercase font-mono text-[#10B981] font-semibold">Certified</span>
-              <span className="text-xs font-heading font-bold text-white leading-tight">5x Verified</span>
+              <span className="text-xs font-heading font-bold text-white leading-tight">6x Verified</span>
             </div>
           </div>
         </FadeIn>

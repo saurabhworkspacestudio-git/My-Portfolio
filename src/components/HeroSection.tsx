@@ -26,7 +26,7 @@ export const HeroSection: React.FC = () => {
               </span>
               <span className="text-[10px] text-[#10B981] font-mono flex items-center gap-1.5 leading-none mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
-                Salesforce Dev &bull; 5x Cert
+                Salesforce Dev &bull; 6x Cert
               </span>
             </div>
           </a>
@@ -111,7 +111,7 @@ export const HeroSection: React.FC = () => {
                   <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
                   Salesforce Dev
                 </span>
-                <span className="text-[#10B981] font-semibold">5x Certified</span>
+                <span className="text-[#10B981] font-semibold">6x Certified</span>
               </div>
             </div>
           </Magnet>

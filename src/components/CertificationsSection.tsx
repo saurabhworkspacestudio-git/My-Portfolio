@@ -10,6 +10,12 @@ interface CertDetail {
 
 const detailedCerts: CertDetail[] = [
   {
+    code: 'PD-II',
+    name: 'Salesforce Certified Platform Developer II',
+    description: 'Advanced programmatic architecture, asynchronous Apex, complex data modeling, governor optimization, and integration patterns.',
+    logo: 'assets/certifications/platform_developer_2.png',
+  },
+  {
     code: 'PD-I',
     name: 'Salesforce Certified Platform Developer I',
     description: 'Core Apex programmatic architecture, triggers, visual frameworks, and governor-limit compliant data operations.',
@@ -70,7 +76,7 @@ export const CertificationsSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Normal Responsive Grid Display: 5 Certification Cards */}
+      {/* Normal Responsive Grid Display: 6 Certification Cards */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
         <div className="flex flex-wrap justify-center gap-6">
           {detailedCerts.map((cert) => (

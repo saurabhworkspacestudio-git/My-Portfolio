@@ -31,7 +31,7 @@ const milestones: Milestone[] = [
   {
     year: 'Today',
     title: 'Still Learning • Building',
-    description: '5x Certified Trailblazer advancing into Agentforce AI, Async Apex, and modern architectures.',
+    description: '6x Certified Trailblazer advancing into Platform Developer II, Agentforce AI, Async Apex, and modern architectures.',
   },
 ];
 

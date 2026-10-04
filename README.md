@@ -13,7 +13,7 @@
 
   <p>
     <img src="https://img.shields.io/badge/Experience-4.5%2B%20Years-blue?style=flat-square" alt="Experience" />
-    <img src="https://img.shields.io/badge/Certifications-5x%20Salesforce%20Certified-success?style=flat-square" alt="Certifications" />
+    <img src="https://img.shields.io/badge/Certifications-6x%20Salesforce%20Certified-success?style=flat-square" alt="Certifications" />
     <img src="https://img.shields.io/badge/Focus-Enterprise%20Cloud%20Solutions-orange?style=flat-square" alt="Focus" />
   </p>
 
@@ -34,7 +34,7 @@ Welcome to the official repository of **Saurabh Gaikwad's Developer Portfolio**.
 - **🌓 Modern Developer Aesthetic:** Sleek dark-mode interface with emerald/mint accents, glassmorphic elements, and typography powered by *Space Grotesk* and *Inter*.
 - **🧭 Interactive Career Journey:** A chronological milestone journey tracking progression from university engineering to enterprise consulting at Cognizant.
 - **🚀 Featured Enterprise Projects:** Deep dive into production implementations with real business impact, architecture details, and governor limit optimizations.
-- **🏆 5x Salesforce Certification Showcase:** Interactive credential badges with direct verification links to Trailhead / Trailblazer profile.
+- **🏆 6x Salesforce Certification Showcase:** Interactive credential badges with direct verification links to Trailhead / Trailblazer profile.
 - **⚡ Categorized Technical Skills:** Interactive skill breakdown across Platform, Core Development, Automation, Integrations, and Developer Tooling.
 - **📱 Responsive & Accessible:** Optimized for seamless viewing across smartphones, tablets, and ultra-wide desktop displays.
 
@@ -78,6 +78,7 @@ Welcome to the official repository of **Saurabh Gaikwad's Developer Portfolio**.
 
 ## 📜 Certifications
 
+- 🏅 **Salesforce Certified Platform Developer II**
 - 🏅 **Salesforce Certified Platform Developer I**
 - 🏅 **Salesforce Certified Administrator**
 - 🏅 **Salesforce Certified Sales Cloud Consultant**
